@@ -175,18 +175,41 @@ ServerAliveCountMax 3
 
 ---
 
-## Visual safety cue: red hostname in SSH sessions
+## Visual safety cue: red username@hostname in SSH sessions
 
-Add to Starship config (`~/.config/starship.toml`) so remote shells are visually distinct:
+Two steps required — the default shell fix and the Starship config.
+
+### 1. Set OpenSSH default shell to PowerShell (Admin PowerShell)
+
+Windows OpenSSH defaults to `cmd.exe`, so Starship never loads. Fix it:
+
+```powershell
+New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" `
+  -Name DefaultShell `
+  -Value "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" `
+  -PropertyType String -Force
+```
+
+> If PowerShell 7 (`pwsh`) is installed, prefer `C:\Program Files\PowerShell\7\pwsh.exe` instead.
+
+### 2. Starship config (`~/.config/starship.toml`)
+
+Add `$username` before `$hostname` in the format chain, then configure both modules:
 
 ```toml
+[username]
+show_always = false
+style_user = "bold bright-red"
+style_root = "bold bright-red"
+format = "[$user]($style)"
+
 [hostname]
 ssh_only = true
 style = "bold bright-red"
 format = "[@$hostname]($style) "
 ```
 
-Make sure `$hostname` is included in your main `format` chain.
+Starship detects SSH via the `SSH_CONNECTION` environment variable. Both modules only appear when SSH is active, showing `maver@MAVERICKPC` in red as a visual indicator.
 
 ---
 
