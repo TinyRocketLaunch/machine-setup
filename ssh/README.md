@@ -15,41 +15,96 @@ Optional future improvement: rotate to per-device keys if stricter trust boundar
 
 ## Canonical host aliases
 
-### Pi (`~/.ssh/config`)
-```
-Host pc
-  HostName 10.0.0.166
-  User maver
+Use `ssh <alias>` for LAN and `ssh <alias>-ts` for Tailscale from any device.
 
-Host laptop
-  HostName 10.0.0.222
-  User Rocket
-```
+| Alias | LAN IP | Tailscale IP | User |
+|-------|--------|-------------|------|
+| `pi` / `pi-ts` | `10.0.0.49` | `100.72.127.67` | `rocket` |
+| `pc` / `pc-ts` | `10.0.0.166` | `100.75.102.95` | `maver` |
+| `laptop` / `laptop-ts` | `10.0.0.222` | `100.79.198.114` | `Rocket` |
 
 ### Laptop (`C:\Users\Rocket\.ssh\config`)
 ```
 Host pi
-  HostName 10.0.0.49
-  User rocket
+    HostName 10.0.0.49
+    User rocket
+    IdentityFile ~/.ssh/raspberry_rig_ed25519
+    IdentitiesOnly yes
+
+Host pi-ts
+    HostName 100.72.127.67
+    User rocket
+    IdentityFile ~/.ssh/raspberry_rig_ed25519
+    IdentitiesOnly yes
 
 Host pc
-  HostName 10.0.0.166
-  User maver
+    HostName 10.0.0.166
+    User maver
+    IdentityFile ~/.ssh/raspberry_rig_ed25519
+    IdentitiesOnly yes
+
+Host pc-ts
+    HostName 100.75.102.95
+    User maver
+    IdentityFile ~/.ssh/raspberry_rig_ed25519
+    IdentitiesOnly yes
+```
+
+### Pi (`~/.ssh/config`)
+```
+Host pc
+    HostName 10.0.0.166
+    User maver
+    IdentityFile ~/.ssh/raspberry_rig_ed25519
+    IdentitiesOnly yes
+
+Host pc-ts
+    HostName 100.75.102.95
+    User maver
+    IdentityFile ~/.ssh/raspberry_rig_ed25519
+    IdentitiesOnly yes
+
+Host laptop
+    HostName 10.0.0.222
+    User Rocket
+    IdentityFile ~/.ssh/raspberry_rig_ed25519
+    IdentitiesOnly yes
+
+Host laptop-ts
+    HostName 100.79.198.114
+    User Rocket
+    IdentityFile ~/.ssh/raspberry_rig_ed25519
+    IdentitiesOnly yes
 ```
 
 ### PC (`C:\Users\maver\.ssh\config`)
 ```
+Host pi
+    HostName 10.0.0.49
+    User rocket
+    IdentityFile ~/.ssh/raspberry_rig_ed25519
+    IdentitiesOnly yes
+
+Host pi-ts
+    HostName 100.72.127.67
+    User rocket
+    IdentityFile ~/.ssh/raspberry_rig_ed25519
+    IdentitiesOnly yes
+
 Host laptop
-  HostName 10.0.0.222
-  User Rocket
+    HostName 10.0.0.222
+    User Rocket
+    IdentityFile ~/.ssh/raspberry_rig_ed25519
+    IdentitiesOnly yes
+
+Host laptop-ts
+    HostName 100.79.198.114
+    User Rocket
+    IdentityFile ~/.ssh/raspberry_rig_ed25519
+    IdentitiesOnly yes
 ```
 
-Validated aliases (as of 2026-02-16):
-- laptop → `ssh pi`, `ssh pc`
-- Pi → `ssh laptop`
-- PC → `ssh laptop`
-
-Optional future improvement: migrate from static IPs to mDNS/DNS once LAN naming is stable.
+Note: `laptop` LAN alias may be stale if the laptop's LAN IP changes — Tailscale alias is more reliable for remote access.
 
 ---
 
