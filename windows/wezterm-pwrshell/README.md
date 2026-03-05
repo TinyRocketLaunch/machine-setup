@@ -30,6 +30,8 @@ Do not use this as-is on Linux. A Linux-specific variant should live separately.
 ## Files in this folder
 
 - `wezterm.lua` - Copyable config for `C:\Users\<USERNAME>\.wezterm.lua`.
+- `apply-taskbar-icon.ps1` - Applies the repo icon to Start Menu + pinned taskbar WezTerm shortcuts.
+- `icons/citylights_option_2.ico` - Current preferred WezTerm taskbar icon.
 
 ## Prerequisites (Windows-specific)
 
@@ -67,6 +69,21 @@ Copy-Item "$HOME\\Documents\\codex-workspace\\machine-setup\\windows\\wezterm-pw
 ```powershell
 wezterm cli reload-config
 ```
+
+## Taskbar icon setup (Windows-specific)
+
+Apply the icon shipped in this folder:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File "$HOME\Documents\codex-workspace\machine-setup\windows\wezterm-pwrshell\apply-taskbar-icon.ps1"
+```
+
+If Windows still shows the old icon immediately, unpin/re-pin WezTerm once.
+
+### Attribution
+
+- Icon source: `dhanishgajjar/terminal-icons`
+- Selected file: `ico/citylights_option_2.ico`
 
 ## Validation checklist
 
