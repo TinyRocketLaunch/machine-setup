@@ -32,7 +32,7 @@ Do not use this as-is on Linux. A Linux-specific variant should live separately.
 - `wezterm.lua` - Copyable config for `C:\Users\<USERNAME>\.wezterm.lua`.
 - `apply-full-setup.ps1` - One-shot setup (copy config, apply icon, validate, reload).
 - `apply-taskbar-icon.ps1` - Applies the repo icon to Start Menu + pinned taskbar WezTerm shortcuts.
-- `icons/wezterm_cyberpunk_icon.ico` - Current default WezTerm taskbar icon.
+- `icons/wezterm_neon_icon.ico` - Current default WezTerm taskbar icon.
 
 ## Prerequisites (Windows-specific)
 
@@ -95,7 +95,7 @@ If Windows still shows the old icon immediately, unpin/re-pin WezTerm once.
 
 ### Icon note
 
-- `apply-taskbar-icon.ps1` defaults to `icons/wezterm_cyberpunk_icon.ico`.
+- `apply-taskbar-icon.ps1` defaults to `icons/wezterm_neon_icon.ico`.
 - You can switch icon by passing `-IconPath <path-to-ico>`.
 
 ## Validation checklist
