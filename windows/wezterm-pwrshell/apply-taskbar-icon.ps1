@@ -1,8 +1,18 @@
 param(
-  [string]$IconPath = "$PSScriptRoot\icons\wezterm_neon_icon.ico"
+  [string]$IconPath
 )
 
 $ErrorActionPreference = 'Stop'
+
+if (-not $IconPath) {
+  $latest = Get-ChildItem (Join-Path $PSScriptRoot 'icons') -Filter *.ico -ErrorAction SilentlyContinue |
+    Sort-Object LastWriteTime -Descending |
+    Select-Object -First 1
+  if (-not $latest) {
+    throw "No .ico files found in $PSScriptRoot\icons"
+  }
+  $IconPath = $latest.FullName
+}
 
 if (-not (Test-Path $IconPath)) {
   throw "Icon file not found: $IconPath"
