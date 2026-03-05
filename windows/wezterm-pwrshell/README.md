@@ -30,6 +30,7 @@ Do not use this as-is on Linux. A Linux-specific variant should live separately.
 ## Files in this folder
 
 - `wezterm.lua` - Copyable config for `C:\Users\<USERNAME>\.wezterm.lua`.
+- `apply-full-setup.ps1` - One-shot setup (copy config, apply icon, validate, reload).
 - `apply-taskbar-icon.ps1` - Applies the repo icon to Start Menu + pinned taskbar WezTerm shortcuts.
 - `icons/citylights_option_2.ico` - Current preferred WezTerm taskbar icon.
 
@@ -52,6 +53,18 @@ winget install --id junegunn.fzf -e
 ```
 
 ## Install steps (Windows-specific)
+
+Recommended one-shot setup:
+```powershell
+powershell -ExecutionPolicy Bypass -File "$HOME\Documents\codex-workspace\machine-setup\windows\wezterm-pwrshell\apply-full-setup.ps1" -InstallPrereqs
+```
+
+If WezTerm and dependencies are already installed, omit prereq install:
+```powershell
+powershell -ExecutionPolicy Bypass -File "$HOME\Documents\codex-workspace\machine-setup\windows\wezterm-pwrshell\apply-full-setup.ps1"
+```
+
+Manual path (if needed):
 
 1. Copy config from this repo to your home directory:
 ```powershell
