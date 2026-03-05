@@ -2,6 +2,11 @@
 
 Post-Claude setup for a Windows machine. Claude can assist with most of this once `cld` is working.
 
+## Terminal profile (Windows-only)
+
+- [wezterm-pwrshell/](./wezterm-pwrshell/) - Reproducible WezTerm + PowerShell setup used on this machine.
+- Scope: Windows only. Do not apply those steps to Linux.
+
 ## Essential tools
 
 ```powershell
