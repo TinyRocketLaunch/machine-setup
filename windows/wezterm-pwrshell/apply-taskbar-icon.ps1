@@ -1,5 +1,5 @@
 param(
-  [string]$IconPath = "$PSScriptRoot\icons\citylights_option_2.ico"
+  [string]$IconPath = "$PSScriptRoot\icons\wezterm_cyberpunk_icon.ico"
 )
 
 $ErrorActionPreference = 'Stop'

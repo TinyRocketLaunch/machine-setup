@@ -32,7 +32,7 @@ Do not use this as-is on Linux. A Linux-specific variant should live separately.
 - `wezterm.lua` - Copyable config for `C:\Users\<USERNAME>\.wezterm.lua`.
 - `apply-full-setup.ps1` - One-shot setup (copy config, apply icon, validate, reload).
 - `apply-taskbar-icon.ps1` - Applies the repo icon to Start Menu + pinned taskbar WezTerm shortcuts.
-- `icons/citylights_option_2.ico` - Current preferred WezTerm taskbar icon.
+- `icons/wezterm_cyberpunk_icon.ico` - Current default WezTerm taskbar icon.
 
 ## Prerequisites (Windows-specific)
 
@@ -93,10 +93,10 @@ powershell -ExecutionPolicy Bypass -File "$HOME\Documents\codex-workspace\machin
 
 If Windows still shows the old icon immediately, unpin/re-pin WezTerm once.
 
-### Attribution
+### Icon note
 
-- Icon source: `dhanishgajjar/terminal-icons`
-- Selected file: `ico/citylights_option_2.ico`
+- `apply-taskbar-icon.ps1` defaults to `icons/wezterm_cyberpunk_icon.ico`.
+- You can switch icon by passing `-IconPath <path-to-ico>`.
 
 ## Validation checklist
 
